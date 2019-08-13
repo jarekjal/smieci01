@@ -1,21 +1,24 @@
 package jarekjal.nauka;
 
-import java.math.BigDecimal;
+public class Towar implements Comparable<Towar>{
 
-public class Towar {
-
+    private static int nextid = 0;
+    private int id;
     private String name;
-    private BigDecimal price;
-    private BigDecimal quantity;
+    private int price;
+    private double quantity;
 
     public Towar() {
-        this("unknown", "0.0", "0.0");
+        this("unknown", 0, 0.0);
     }
 
-    public Towar(String name, String price, String quantity) {
-        this.name = name;
-        this.price = new BigDecimal(price);
-        this.quantity = new BigDecimal(quantity);
+    public Towar(String name, int price, double quantity) {
+        if (!name.equals("") && price > 0 && quantity > 0.0){
+            this.id = nextid++;
+            this.name = name;
+            this.price = price;
+            this.quantity = quantity;
+        } else throw new IllegalArgumentException("Bad constructor arguments");
     }
 
     public Towar(Towar t){
@@ -26,18 +29,54 @@ public class Towar {
 
     @Override
     public String toString() {
-        return super.toString() + "[name: " + name + ", price: " + price.toString() + ", quantity: " + quantity.toString() + "]";
+        return //super.toString() +
+                "["
+                + "id: " + id
+                + ", name: " + name
+                + ", price: " + formatIntAsDecimal(price)
+                + ", quantity: " + quantity
+                + ", value: " + formatIntAsDecimal(getValue())
+                + "]";
     }
 
     public String getName() {
         return name;
     }
 
-    public BigDecimal getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public BigDecimal getQuantity() {
+    public double getQuantity() {
         return quantity;
+    }
+
+    public void setQuantity(double qty){
+        quantity = qty;
+    }
+
+    public int getValue(){
+        return (int)Math.round(quantity * price);
+    }
+
+    private String formatIntAsDecimal(int num) {
+        int gr = num % 100;
+        String grStr ;
+        if (gr == 0) {
+            grStr = "00";
+        } else {
+            grStr = "" + gr;
+        }
+        int zl = num / 100;
+        return  "" + zl + "." + grStr;
+    }
+
+    @Override
+    public int compareTo(Towar o) {
+        int result =  this.getName().compareTo(o.getName());
+        if (result == 0) {
+            result = this.price - o.price;
+        }
+        return result;
     }
 }
