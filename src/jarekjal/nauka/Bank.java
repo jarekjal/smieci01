@@ -14,9 +14,7 @@ public class Bank {
     public void addInterest() {
         Collection<BankAccount> accs = accounts.values();
         for(BankAccount a : accs){
-            int balance = a.getBalance();
-            int newbalance = (int) (balance * (1 + rate));
-            a.setBalance(newbalance);
+            a.addInterest();
         }
     }
 
@@ -24,26 +22,19 @@ public class Bank {
         String result= "";
         Collection<BankAccount> accs = accounts.values();
         for (BankAccount a : accs){
-            result +="Balance of account nr: " + a.getAcctnum() + " ("
-                    + (a.isForeign() ? "foreign" : "domestic") + ") is " + a.getBalance() + "\n";
+            result += a.toString();
         }
         return result;
     }
 
     public boolean authorizeLoan(int id, int amount) {
-        int balance = accounts.get(id).getBalance();
-        if(amount <= balance / 2) {
-            return true;
-        } else {
-            return false;
-        }
+        BankAccount a = accounts.get(id);
+        return a.hasEnoughCollateral(amount);
     }
 
     public void deposit(int id,int amount) {
         BankAccount act = accounts.get(id);
-        int balance = act.getBalance();
-        act.setBalance(balance + amount);
-        accounts.put(id, act);
+        act.deposit(amount);
     }
 
     public int select(int id) {
