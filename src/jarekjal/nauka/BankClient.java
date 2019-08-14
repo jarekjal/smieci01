@@ -4,11 +4,15 @@ import java.util.Scanner;
 
 public class BankClient {
 
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
     private boolean done = false;
-    private Bank bank = new Bank();
+    private Bank bank;
     private int current = -1;
 
+    public BankClient(Scanner scanner, Bank bank){
+       this.bank = bank;
+       this.scanner = scanner;
+    }
 
 
     public void run(){

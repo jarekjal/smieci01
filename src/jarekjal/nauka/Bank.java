@@ -6,10 +6,13 @@ import java.util.Set;
 
 public class Bank {
 
-    private HashMap<Integer, BankAccount> accounts = new HashMap<>();
-    private double rate = 0.01;
-    private int nextacct = 0;
+    private HashMap<Integer, BankAccount> accounts;
+    private int nextacct;
 
+    public Bank(HashMap<Integer, BankAccount> accounts, int n){
+        this.accounts = accounts;
+        nextacct = n;
+    }
 
     public void addInterest() {
         Collection<BankAccount> accs = accounts.values();
