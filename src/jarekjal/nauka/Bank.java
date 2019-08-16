@@ -2,7 +2,6 @@ package jarekjal.nauka;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Set;
 
 public class Bank {
 
@@ -45,9 +44,14 @@ public class Bank {
         return balance;
     }
 
-    public int newAccount(boolean foreign) {
+    public int newAccount(int type, boolean foreign) {
         int id = nextacct++;
-        BankAccount newAcc = new BankAccount(id);
+        BankAccount newAcc;
+        if (type == 1) {
+            newAcc = new SavingsAccount(id);
+        } else {
+            newAcc = new CheckingAccount(id);
+        }
         newAcc.setForeign(foreign);
         accounts.put(id, newAcc);
         return id;
