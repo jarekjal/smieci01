@@ -1,6 +1,6 @@
 package jarekjal.nauka;
 
-public interface BankAccount {
+public interface BankAccount extends Comparable<BankAccount> {
 
     public int getAcctnum();
 
@@ -17,4 +17,14 @@ public interface BankAccount {
     public String toString();
 
     public boolean hasEnoughCollateral(int amount);
+
+    public static BankAccount createAccountWithDeposit(int accnum, int deposit){
+        BankAccount ba = new SavingsAccount(accnum);
+        ba.deposit(deposit);
+        return ba;
+    }
+
+    public default boolean isEmpty(){
+        return getBalance() == 0;
+    }
 }

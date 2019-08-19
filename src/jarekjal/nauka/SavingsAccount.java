@@ -1,6 +1,6 @@
 package jarekjal.nauka;
 
-public class SavingsAccount implements BankAccount {
+public class SavingsAccount implements BankAccount{
 
     private int acctnum;
     private int balance = 0;
@@ -51,4 +51,16 @@ public class SavingsAccount implements BankAccount {
     public void addInterest() {
         balance = (int)(balance * (1+rate));
     }
+
+    @Override
+    public int compareTo(BankAccount o) {
+        int bal1 = this.getBalance();
+        int bal2 = o.getBalance();
+        if (bal1 == bal2){
+            return this.getAcctnum() - o.getAcctnum();
+        } else {
+            return bal1 - bal2;
+        }
+    }
+
 }

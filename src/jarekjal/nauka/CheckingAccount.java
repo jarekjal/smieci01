@@ -50,4 +50,16 @@ public class CheckingAccount implements BankAccount{
     public boolean hasEnoughCollateral(int amount) {
         return balance >= 2 * amount / 3;
     }
+
+    @Override
+    public int compareTo(BankAccount o) {
+        int bal1 = this.getBalance();
+        int bal2 = o.getBalance();
+        if (bal1 == bal2){
+            return this.getAcctnum() - o.getAcctnum();
+        } else {
+            return bal1 - bal2;
+        }
+    }
+
 }
