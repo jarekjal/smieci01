@@ -50,7 +50,7 @@ public class Bank {
         if (type == 1) {
             newAcc = new SavingsAccount(id);
         } else if (type == 2){
-            newAcc = new CheckingAccount(id);
+            newAcc = new RegularChecking(id);
         } else {
             newAcc = new InterestChecking(id);
         }

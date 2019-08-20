@@ -1,20 +1,13 @@
 package jarekjal.nauka;
 
-public class CheckingAccount extends AbstractBankAccount {
+public abstract class CheckingAccount extends AbstractBankAccount {
 
-    public CheckingAccount(int a){
+    protected CheckingAccount(int a){
         super(a);
     }
 
-    @Override
-    public void addInterest() {
-        // do nothing
-    }
-
-    @Override
-    public String toString(){
-        return "Checking account nr: " + acctnum + " is " + ( isForeign ? "foreign" : "domestic") +" and has balance: " + balance + "\n";
-    }
+    public abstract void addInterest();
+    public abstract String toString();
 
     @Override
     public boolean hasEnoughCollateral(int amount) {
