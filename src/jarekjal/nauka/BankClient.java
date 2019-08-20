@@ -85,7 +85,7 @@ public class BankClient {
     }
 
     private int requestType() {
-        System.out.print("Enter account type: (1=savings, 0=checking): ");
+        System.out.print("Enter account type: (1=savings, 2=checking, 3=interestChecking): ");
         int type = scanner.nextInt();
         return type;
     }

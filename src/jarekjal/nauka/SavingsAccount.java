@@ -1,41 +1,12 @@
 package jarekjal.nauka;
 
-public class SavingsAccount implements BankAccount{
+public class SavingsAccount extends AbstractBankAccount {
 
-    private int acctnum;
-    private int balance = 0;
-    private boolean isForeign = false;
     private static double rate = 0.01;
 
     public SavingsAccount(int a){
-        acctnum = a;
+        super(a);
     }
-
-    @Override
-    public int getAcctnum() {
-        return acctnum;
-    }
-
-    @Override
-    public int getBalance() {
-        return balance;
-    }
-
-    @Override
-    public boolean isForeign() {
-        return isForeign;
-    }
-
-    @Override
-    public void setForeign(boolean foreign) {
-        isForeign = foreign;
-    }
-
-    @Override
-    public void deposit(int amount){
-        balance += amount;
-    }
-
 
     @Override
     public String toString(){
@@ -50,17 +21,6 @@ public class SavingsAccount implements BankAccount{
     @Override
     public void addInterest() {
         balance = (int)(balance * (1+rate));
-    }
-
-    @Override
-    public int compareTo(BankAccount o) {
-        int bal1 = this.getBalance();
-        int bal2 = o.getBalance();
-        if (bal1 == bal2){
-            return this.getAcctnum() - o.getAcctnum();
-        } else {
-            return bal1 - bal2;
-        }
     }
 
 }

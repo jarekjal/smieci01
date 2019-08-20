@@ -49,8 +49,10 @@ public class Bank {
         BankAccount newAcc;
         if (type == 1) {
             newAcc = new SavingsAccount(id);
-        } else {
+        } else if (type == 2){
             newAcc = new CheckingAccount(id);
+        } else {
+            newAcc = new InterestChecking(id);
         }
         newAcc.setForeign(foreign);
         accounts.put(id, newAcc);
