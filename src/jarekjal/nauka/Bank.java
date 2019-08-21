@@ -13,6 +13,10 @@ public class Bank {
         nextacct = n;
     }
 
+    public int getNextacct(){
+        return nextacct;
+    }
+
     public void addInterest() {
         Collection<BankAccount> accs = accounts.values();
         for(BankAccount a : accs){
