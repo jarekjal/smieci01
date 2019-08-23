@@ -1,6 +1,5 @@
 package jarekjal.nauka;
 
-import java.io.InputStream;
 import java.util.Scanner;
 
 public class BankClient {
@@ -11,7 +10,7 @@ public class BankClient {
     private int current = 0;
     private InputCommand[] inputCommands = { new CmdQuit(), new CmdNewAccount(), new CmdSelect(),
                                              new CmdDeposit(), new CmdAuthorizeLoan(), new CmdShowAll(),
-                                             new CmdShowAll(), new CmdSetForeign()
+                                             new CmdAddInterest(), new CmdSetForeign()
                                             };
 
     public BankClient(Scanner scanner, Bank bank){
@@ -22,10 +21,21 @@ public class BankClient {
 
     public void run(){
         while(!done) {
-            System.out.print("Enter command (0=quit, 1=new, 2=select, 3=deposit, 4=loan, 5=show, 6=interest, 7=setForeign): ");
+            String commands = constructMessage();
+            System.out.print(commands);
             int cmd = scanner.nextInt();
             processCommand(cmd);
         }
+    }
+
+    private String constructMessage() {
+        String msg = "Enter command (";
+        for (int i = 0; i < inputCommands.length - 1; i++){
+            msg += "" + i + "=" + inputCommands[i].toString() + ", ";
+        }
+        int lastInd = inputCommands.length - 1;
+        msg += "" + (lastInd) + "=" + inputCommands[lastInd].toString() +"): ";
+        return msg;
     }
 
     private void processCommand(int cmd) {

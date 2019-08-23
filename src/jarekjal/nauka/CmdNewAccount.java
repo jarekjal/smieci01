@@ -9,7 +9,7 @@ public class CmdNewAccount implements InputCommand {
     @Override
     public int execute(Scanner sc, Bank bank, int current) {
         scanner = sc;
-        boolean isForeign = requestForeign();
+        boolean isForeign = CmdSetForeign.requestForeign(scanner);
         int accType = requestType();
         int id = bank.newAccount(accType, isForeign);
         System.out.println("New acount nr is: " + id);
@@ -22,16 +22,8 @@ public class CmdNewAccount implements InputCommand {
         return type;
     }
 
-    private boolean requestForeign(){
-        System.out.print("Is foreign account? (0=no, 1=yes): ");
-        int foreign = scanner.nextInt();
-        boolean isForeign;
-        if (foreign == 1) {
-            isForeign = true;
-        }
-        else {
-            isForeign = false;
-        }
-        return isForeign;
+    @Override
+    public String toString(){
+        return "new";
     }
 }

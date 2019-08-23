@@ -8,4 +8,10 @@ public class CmdShowAll  implements InputCommand{
         System.out.println(bank.toString());
         return current;
     }
+
+    @Override
+    public String toString(){
+        return "show";
+    }
+
 }

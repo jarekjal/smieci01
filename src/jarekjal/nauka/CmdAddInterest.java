@@ -8,4 +8,9 @@ public class CmdAddInterest implements InputCommand {
         bank.addInterest();
         return current;
     }
+
+    @Override
+    public String toString(){
+        return "interest";
+    }
 }

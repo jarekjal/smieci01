@@ -9,4 +9,9 @@ public class CmdQuit implements InputCommand {
         System.out.println("Good bye!");
         return -1; // means set done to true
     }
+
+    @Override
+    public String toString(){
+        return "quit";
+    }
 }

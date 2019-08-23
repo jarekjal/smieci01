@@ -15,4 +15,9 @@ public class CmdAuthorizeLoan implements InputCommand{
         }
         return current;
     }
+
+    @Override
+    public String toString(){
+        return "loan";
+    }
 }

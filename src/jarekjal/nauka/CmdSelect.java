@@ -11,4 +11,9 @@ public class CmdSelect implements InputCommand {
         System.out.println("Balance of account nr " + current + " is " + balance);
         return current;
     }
+
+    @Override
+    public String toString(){
+        return "select";
+    }
 }

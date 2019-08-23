@@ -11,4 +11,9 @@ public class CmdDeposit  implements InputCommand{
         System.out.println("Deposited money");
         return current;
     }
+
+    @Override
+    public String toString(){
+        return "deposit";
+    }
 }
