@@ -4,7 +4,7 @@ public abstract class AbstractBankAccount implements BankAccount{
 
     protected int acctnum;
     protected int balance = 0;
-    protected boolean isForeign = false;
+    private OwnerStrategy owner = new Domestic();
 
     protected AbstractBankAccount(int num){
         acctnum = num;
@@ -22,12 +22,16 @@ public abstract class AbstractBankAccount implements BankAccount{
 
     @Override
     public boolean isForeign() {
-        return isForeign;
+        return owner.isForeign();
     }
 
     @Override
     public void setForeign(boolean foreign) {
-        isForeign = foreign;
+        owner = foreign ? new Foreign() : new Domestic();
+    }
+
+    public int fee(){
+        return owner.fee();
     }
 
     @Override
@@ -54,8 +58,21 @@ public abstract class AbstractBankAccount implements BankAccount{
         } else return false;
     }
 
-    public abstract void addInterest();
-    public abstract String toString();
-    public abstract boolean hasEnoughCollateral(int amount);
+    public boolean hasEnoughCollateral(int amount){
+        return balance >= amount * collateralRatio();
+    }
+
+    public void addInterest(){
+        balance += (int)(balance * interestRate());
+    }
+
+    public String toString(){
+        return accountType() + " account nr: " + acctnum + " is " + owner +" and has balance: " + balance
+                + ", fee=" + owner.fee() +"\n";
+    }
+
+    protected abstract double collateralRatio();
+    protected abstract double interestRate();
+    protected abstract String accountType();
 
 }

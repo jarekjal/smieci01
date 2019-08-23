@@ -1,0 +1,18 @@
+package jarekjal.nauka;
+
+import java.util.Scanner;
+
+public class CmdAuthorizeLoan implements InputCommand{
+    @Override
+    public int execute(Scanner sc, Bank bank, int current) {
+        System.out.print("Enter loan amount to authorize: ");
+        int amount = sc.nextInt();
+        boolean result = bank.authorizeLoan(current, amount);
+        if(result) {
+            System.out.println("Authorized!");
+        } else {
+            System.out.println("Not authorized :(");
+        }
+        return current;
+    }
+}

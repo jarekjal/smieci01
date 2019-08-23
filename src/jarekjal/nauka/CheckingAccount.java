@@ -2,16 +2,14 @@ package jarekjal.nauka;
 
 public abstract class CheckingAccount extends AbstractBankAccount {
 
-    protected CheckingAccount(int a){
+    public CheckingAccount(int a){
         super(a);
     }
 
-    public abstract void addInterest();
-    public abstract String toString();
-
-    @Override
-    public boolean hasEnoughCollateral(int amount) {
-        return balance >= 2 * amount / 3;
+    public double collateralRatio(){
+        return 2.0 / 3.0;
     }
 
+    protected abstract double interestRate();
+    protected abstract String accountType();
 }
