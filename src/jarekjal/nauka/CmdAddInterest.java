@@ -2,7 +2,9 @@ package jarekjal.nauka;
 
 import java.util.Scanner;
 
-public class CmdAddInterest implements InputCommand {
+public enum CmdAddInterest implements InputCommand {
+    INSTANCE;
+
     @Override
     public int execute(Scanner sc, Bank bank, int current) {
         bank.addInterest();

@@ -2,7 +2,8 @@ package jarekjal.nauka;
 
 import java.util.Scanner;
 
-public class CmdQuit implements InputCommand {
+public enum CmdQuit implements InputCommand {
+    INSTANCE;
 
     @Override
     public int execute(Scanner sc, Bank bank, int current) {

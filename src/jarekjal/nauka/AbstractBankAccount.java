@@ -4,7 +4,7 @@ public abstract class AbstractBankAccount implements BankAccount{
 
     protected int acctnum;
     protected int balance = 0;
-    private OwnerStrategy owner = Domestic.INSTANCE;
+    private OwnerStrategy owner = Owners.DOMESTIC;
 
     protected AbstractBankAccount(int num){
         acctnum = num;
@@ -27,7 +27,7 @@ public abstract class AbstractBankAccount implements BankAccount{
 
     @Override
     public void setForeign(boolean foreign) {
-        owner = foreign ? Foreign.INSTANCE : Domestic.INSTANCE;
+        owner = foreign ? Owners.FOREIGN : Owners.DOMESTIC;
     }
 
     public int fee(){

@@ -2,7 +2,8 @@ package jarekjal.nauka;
 
 import java.util.Scanner;
 
-public class CmdNewAccount implements InputCommand {
+public enum CmdNewAccount implements InputCommand {
+    INSTANCE;
 
     private Scanner scanner;
 

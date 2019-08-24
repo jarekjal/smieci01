@@ -2,7 +2,9 @@ package jarekjal.nauka;
 
 import java.util.Scanner;
 
-public class CmdDeposit  implements InputCommand{
+public enum CmdDeposit  implements InputCommand{
+    INSTANCE;
+
     @Override
     public int execute(Scanner sc, Bank bank, int current) {
         System.out.print("Enter money amount: ");

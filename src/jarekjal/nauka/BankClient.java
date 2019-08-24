@@ -8,9 +8,9 @@ public class BankClient {
     private boolean done = false;
     private Bank bank;
     private int current = 0;
-    private InputCommand[] inputCommands = { new CmdQuit(), new CmdNewAccount(), new CmdSelect(),
-                                             new CmdDeposit(), new CmdAuthorizeLoan(), new CmdShowAll(),
-                                             new CmdAddInterest(), new CmdSetForeign()
+    private InputCommand[] inputCommands = { CmdQuit.INSTANCE, CmdNewAccount.INSTANCE, CmdSelect.INSTANCE,
+                                             CmdDeposit.INSTANCE, CmdAuthorizeLoan.INSTANCE, CmdShowAll.INSTANCE,
+                                             CmdAddInterest.INSTANCE, CmdSetForeign.INSTANCE
                                             };
 
     public BankClient(Scanner scanner, Bank bank){

@@ -2,7 +2,9 @@ package jarekjal.nauka;
 
 import java.util.Scanner;
 
-public class CmdSetForeign implements InputCommand{
+public enum CmdSetForeign implements InputCommand{
+    INSTANCE;
+
     private  Scanner scanner;
 
     @Override
