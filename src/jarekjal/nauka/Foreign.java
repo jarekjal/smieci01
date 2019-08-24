@@ -1,6 +1,7 @@
 package jarekjal.nauka;
 
-public class Foreign implements OwnerStrategy {
+public enum Foreign implements OwnerStrategy {
+    INSTANCE;
 
     @Override
     public boolean isForeign() {
