@@ -19,7 +19,7 @@ public interface BankAccount extends Comparable<BankAccount> {
     public boolean hasEnoughCollateral(int amount);
 
     public static BankAccount createAccountWithDeposit(int accnum, int deposit){
-        BankAccount ba = new SavingsAccount(accnum);
+        BankAccount ba = AccountFactory.createSavings(accnum);
         ba.deposit(deposit);
         return ba;
     }

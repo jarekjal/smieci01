@@ -50,14 +50,7 @@ public class Bank {
 
     public int newAccount(int type, boolean foreign) {
         int id = nextacct++;
-        BankAccount newAcc;
-        if (type == 1) {
-            newAcc = new SavingsAccount(id);
-        } else if (type == 2){
-            newAcc = new RegularChecking(id);
-        } else {
-            newAcc = new InterestChecking(id);
-        }
+        BankAccount newAcc = AccountFactory.createAccount(id, type);
         newAcc.setForeign(foreign);
         accounts.put(id, newAcc);
         return id;
