@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class BankProgram {
     public static void main(String[] args) throws FileNotFoundException {
 
-        SavedBankInfo info = new SavedBankInfo("C:\\testy\\data.info");
+        SavedBankInfo info = new SavedBankInfo("data.info");
         InputStream is = System.in; //new FileInputStream("C:\\testfile.txt");//
         Scanner scanner = new Scanner(is);
         Map<Integer , BankAccount> accounts = info.getAccounts();

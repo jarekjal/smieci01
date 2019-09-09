@@ -1,9 +1,10 @@
 package jarekjal.nauka;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
 
-public class Bank {
+public class Bank implements Iterable<BankAccount> {
 
     private Map<Integer, BankAccount> accounts;
     private int nextacct;
@@ -62,5 +63,10 @@ public class Bank {
 
     public void setForeign(int id, boolean foreign) {
         accounts.get(id).setForeign(foreign);
+    }
+
+    @Override
+    public Iterator<BankAccount> iterator() {
+        return accounts.values().iterator();
     }
 }

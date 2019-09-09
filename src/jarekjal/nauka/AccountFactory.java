@@ -2,27 +2,12 @@ package jarekjal.nauka;
 
 public interface AccountFactory {
 
-    static BankAccount createSavings(int accnum){
-        return new SavingsAccount(accnum);
-    }
+    BankAccount create(int accnum);
 
-    static BankAccount createReguralChecking(int accnum){
-        return new RegularChecking(accnum);
-    }
-
-    static BankAccount createInterestChecking(int accnum){
-        return new InterestChecking(accnum);
-    }
+    static AccountFactory[] factories = AccountFactories.values();
 
     static BankAccount createAccount (int accnum, int type){
-        BankAccount ba;
-        if (type == 1 ){
-            ba = createSavings(accnum);
-        } else if (type == 2) {
-            ba = createReguralChecking(accnum);
-        } else {
-            ba = createInterestChecking(accnum);
-        }
-        return ba;
+        AccountFactory af = factories[type - 1];
+        return af.create(accnum);
     }
 }

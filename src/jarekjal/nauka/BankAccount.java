@@ -1,6 +1,8 @@
 package jarekjal.nauka;
 
-public interface BankAccount extends Comparable<BankAccount> {
+import java.io.Serializable;
+
+public interface BankAccount extends Comparable<BankAccount>, Serializable {
 
     public int getAcctnum();
 
@@ -19,7 +21,9 @@ public interface BankAccount extends Comparable<BankAccount> {
     public boolean hasEnoughCollateral(int amount);
 
     public static BankAccount createAccountWithDeposit(int accnum, int deposit){
-        BankAccount ba = AccountFactory.createSavings(accnum);
+        BankAccount ba;
+        AccountFactory af = AccountFactories.SAVINGS;
+        ba = af.create(accnum);
         ba.deposit(deposit);
         return ba;
     }
