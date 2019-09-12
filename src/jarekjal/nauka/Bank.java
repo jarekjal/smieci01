@@ -67,6 +67,7 @@ public class Bank implements Iterable<BankAccount> {
 
     @Override
     public Iterator<BankAccount> iterator() {
-        return accounts.values().iterator();
+        Iterator<BankAccount> it = accounts.values().iterator();
+        return  new UnmodifiableBankIterator(it);
     }
 }
