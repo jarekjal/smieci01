@@ -1,0 +1,10 @@
+Call: 1247
+Delete: "C:\Users\jarekjal\AppData\Local\Temp\nsy3870.tmp"
+CreateDirectory: "C:\Users\jarekjal\AppData\Local\Temp\nsy3870.tmp" (0)
+CreateDirectory: "C:\Users\jarekjal\AppData\Local\Temp\nsy3870.tmp" created
+File: overwriteflag=1, allowskipfilesflag=2, name="C:\Users\jarekjal\AppData\Local\Temp\nsy3870.tmp\GetVersion.dll"
+File: wrote 6656 to "C:\Users\jarekjal\AppData\Local\Temp\nsy3870.tmp\GetVersion.dll"
+Call: 1247
+File: overwriteflag=1, allowskipfilesflag=2, name="C:\Users\jarekjal\AppData\Local\Temp\nsy3870.tmp\GetVersion.dll"
+File: skipped: "C:\Users\jarekjal\AppData\Local\Temp\nsy3870.tmp\GetVersion.dll" (overwriteflag=1)
+Call: 779
