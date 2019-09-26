@@ -1,16 +1,23 @@
 package jarekjal.nauka;
 
 import javafx.application.Application;
+import javafx.beans.binding.Binding;
+import javafx.beans.property.ObjectProperty;
+import javafx.event.EventHandler;
 import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
+
+
 
 public class AccountCreationWindow extends Application {
     @Override
@@ -21,6 +28,7 @@ public class AccountCreationWindow extends Application {
         stage.show();
         printAllNodes(root);
         System.out.println(getWidestControl(root));
+
     }
 
     private Pane createNodeHierarchy() {
@@ -56,6 +64,7 @@ public class AccountCreationWindow extends Application {
         p1.setAlignment(Pos.CENTER);
         p1.setPadding(new Insets(10));
         p1.setId("VBox p1");
+        p1.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> chbx.valueProperty().setValue(null));
         Label title = new Label("Create a New Bank Account");
         double size = title.getFont().getSize();
         title.setFont(new Font(size * 2));
@@ -67,11 +76,17 @@ public class AccountCreationWindow extends Application {
             String acct = chbx.getValue();
             title.setText(foreign + acct + " Account Created");
         });
+        //chbx.valueProperty().addListener(((observable, oldValue, newValue) -> {btn.setDisable(newValue == null);}));
+        //ObjectProperty<String> valprop = chbx.valueProperty();
+        //Binding<String> binding = valprop.asString();
+        btn.disableProperty().bind(chbx.valueProperty().isNull());
         return p1;
     }
 
     public static void main(String[] args) {
+        System.out.println("Program starting...");
         Application.launch(args);
+        System.out.println("Program exiting...");
     }
 
     private void printAllNodes(Node n) {
